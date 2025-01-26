@@ -10,6 +10,7 @@ titles , linkes or any other HTML elements
 
 def scrape_url(url, header_rows , csv_file):
 
+    #http call to get page
     page = requests.get(url)
 
     webpage = soup(page.content, features='html.parser')
@@ -19,8 +20,6 @@ def scrape_url(url, header_rows , csv_file):
     # web scrape the web page URL , load in given array
     for row in webpage.tbody.find_all('tr'):
         cols = row.find_all('td')
-        
-        # Player name | Pass Yards | yds / att | att | cmp | cmp % | td | int | rate | 1st | 1st% | 20 yd plays | 40 yard plays | long pass play | sacks | sack yards
 
         # Loop through each <td> element to get the text (or you can process it as needed)
         data = []
@@ -29,10 +28,8 @@ def scrape_url(url, header_rows , csv_file):
             data.append(col.get_text().strip())
 
         data_array.append(data)
-    
-    for data in data_array:
-        print(data)
-        print()
+
+    #call method to parse arrays to csv files
     write_to_csv(header_rows,csv_file,data_array)
 
 

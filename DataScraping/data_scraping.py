@@ -13,19 +13,12 @@ passing_yards_headers = ["Player Name", "Passing Yards", " Yards/Attempt", "Atte
 rushing_yards_headers = ["Player Name", "Rushing Yards", "attempts", "Touchdowns", "20 plus yards", "40 plus yards", "Long", "rushing 1st down", "Rushing 1st % " , "Fumbles"]
 receiving_yards_headers = ["Player Name","Receptions", "Receiving Yards","Touchdowns", "20 plus yards", "40 plus yards", "Long", "1st down receptions", "1st % " , "fumbles " ," yac yards ber recpetions " , "targets"]
 
-
+#csv files
 passing_csv = "passingYards.csv"
-receiving_csv = "receivingYards.csv"
 rushing_csv = "rushingYards.csv"
+receiving_csv = "receivingYards.csv"
 
+#call methods to scrape and load data to csv
 scrape_url(passing_page_url,passing_yards_headers,passing_csv)
-
-
-#scrape_url(rushing_page,rushing_yards_headers,rushing_csv)
-#scrape_url(receiving_page, receiving_yards_headers , receiving_csv)
-
-
-
-
-
-
+scrape_url(rushing_page_url, rushing_yards_headers,rushing_csv)
+scrape_url(receiving_page_url, receiving_yards_headers , receiving_csv)
