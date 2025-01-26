@@ -7,9 +7,12 @@ titles , linkes or any other HTML elements
 
 """
 
+
 def scrape_url(url, header_rows , csv_file):
 
-    webpage = soup(url.content, features='html.parser')
+    page = requests.get(url)
+
+    webpage = soup(page.content, features='html.parser')
 
     data_array = []
 
@@ -26,15 +29,19 @@ def scrape_url(url, header_rows , csv_file):
             data.append(col.get_text().strip())
 
         data_array.append(data)
+    
+    for data in data_array:
+        print(data)
+        print()
     write_to_csv(header_rows,csv_file,data_array)
 
 
 
 def write_to_csv(header_rows , csv_file , array_data):
-    with open(csv_file, "w", encoding="utf-8") as file:
+    with open(csv_file, "w", encoding="utf-8", newline="") as file:
         file.write = csv.writer(file)
 
-        file.write.writerows(header_rows)
+        file.write.writerow(header_rows)
 
         for row in array_data:
-            file.write.writerows(row)
+            file.write.writerow(row)
