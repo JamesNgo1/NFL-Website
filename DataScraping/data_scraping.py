@@ -28,16 +28,19 @@ for row in webpage.tbody.find_all('tr'):
        
         data.append(col.get_text().strip())
 
-    finalData.append(data)
+    passing_qb_data.append(data)
 
-#print(len(finalData))
-print(finalData)
 
-qb_passing_file = 'qbPassing'
+qb_passing_file = 'qbPassing.csv'
 
-for row in finalData:
-    print(row)
-    print()
+with open(qb_passing_file, "w", encoding="utf-8") as file:
+    file.write = csv.writer(file)
+
+    file.write.writerow(["Player Name", "Passing Yards", " Yards/Attempt", "Attempt","Completions","Completions Percentage","Touchdowns","Interceptions","Rating","1st","1st%","20+", "40+", "Lng" , "sack", "sack yards"])
+
+    for array in passing_qb_data:
+        file.write.writerow(array)
+
 
 
 
